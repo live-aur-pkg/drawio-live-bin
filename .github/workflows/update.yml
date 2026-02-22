@@ -2,7 +2,7 @@ name: Drawio AUR Auto-Updater
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
           pacman -Sy --noconfirm curl jq
 
           echo "Fetching latest release from GitHub API..."
-          LATEST_VER=$(curl -sL https://api.github.com/repos/jgraph/drawio/releases/latest | jq -r ".tag_name" | sed "s/^v//")
+          LATEST_VER=$(curl -sL https://api.github.com/repos/jgraph/drawio-desktop/releases/latest | jq -r ".tag_name" | sed "s/^v//")
           ARCH_PKGVER=$(echo "$LATEST_VER" | tr "-" "_")
 
           echo "Fetching current version from AUR..."
